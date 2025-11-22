@@ -38,6 +38,32 @@ Aplikasi fullstack untuk manajemen rumah sakit dengan **Golang (Gin + GORM)** ba
 - ✅ **Permission Groups** - Organized by resource (users, roles, permissions)
 - ✅ **Dynamic Authorization** - Real-time permission checking
 
+## 📸 Screenshots
+
+### Login Page
+![Login](image/login.PNG)
+
+### Dashboard
+![Dashboard](image/dashboard.PNG)
+
+### User Management - List
+![User List](image/index.PNG)
+
+### User Management - Create
+![Create User](image/create.PNG)
+
+### User Management - Edit
+![Edit User](image/edit.PNG)
+
+### User Management - Detail
+![User Detail](image/show.PNG)
+
+### Account Profile
+![Account](image/account.PNG)
+
+### Application Settings
+![Settings](image/web-setting.PNG)
+
 ## 📋 Prerequisites
 
 Pastikan sudah terinstall:
