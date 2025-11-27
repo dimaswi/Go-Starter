@@ -61,32 +61,32 @@ export default function DashboardPage() {
       value: loading ? '...' : stats.totalUsers.toString(), 
       change: stats.activeUsers > 0 ? `${stats.activeUsers} active` : 'No data',
       icon: Users, 
-      color: 'text-blue-600 dark:text-blue-400',
-      bgColor: 'bg-blue-50 dark:bg-blue-950'
+      color: 'text-saweria-cyan',
+      bgColor: 'bg-saweria-cyan/10 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
     },
     { 
       title: 'Active Roles', 
       value: loading ? '...' : stats.totalRoles.toString(), 
       change: 'System roles',
       icon: Shield, 
-      color: 'text-green-600 dark:text-green-400',
-      bgColor: 'bg-green-50 dark:bg-green-950'
+      color: 'text-saweria-purple',
+      bgColor: 'bg-saweria-purple/10 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
     },
     { 
       title: 'System Status', 
       value: '99.9%', 
       change: 'Uptime',
       icon: Activity, 
-      color: 'text-purple-600 dark:text-purple-400',
-      bgColor: 'bg-purple-50 dark:bg-purple-950'
+      color: 'text-saweria-pink',
+      bgColor: 'bg-saweria-pink/10 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
     },
     { 
       title: 'New Users', 
       value: loading ? '...' : `+${stats.newUsersThisMonth}`, 
       change: 'Last 30 days',
       icon: UserPlus, 
-      color: 'text-orange-600 dark:text-orange-400',
-      bgColor: 'bg-orange-50 dark:bg-orange-950'
+      color: 'text-saweria-orange',
+      bgColor: 'bg-saweria-orange/10 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
     },
   ];
 
@@ -101,37 +101,41 @@ export default function DashboardPage() {
   return (
     <>
       {/* Page Content */}
-      <div className="flex flex-1 flex-col gap-4 p-4 md:p-6">
+      <div className="flex flex-1 flex-col gap-6 p-4 md:p-6 bg-gradient-to-br from-saweria-cyan/5 via-white to-saweria-orange/5">
+        {/* Welcome Banner */}
+        <div className="bg-gradient-to-r from-saweria-cyan to-saweria-cyan-dark rounded-2xl border border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6 md:p-8 text-white">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2">Dashboard 🎉</h1>
+          <p className="text-lg opacity-90">
+            Welcome back, {user?.full_name}! Here's what's happening today.
+          </p>
+        </div>
+
         {/* Main Card Container */}
-        <Card className="flex-1 rounded-xl border bg-card shadow">
+        <Card className="flex-1">
           <CardHeader>
-            <div className="flex items-center justify-between ">
-              <CardTitle className="text-3xl font-bold tracking-tight">Dashboard</CardTitle>
-            </div>
-            <div>
-              <CardDescription className="text-base">
-                Welcome back, {user?.full_name}! Here's what's happening today.
-              </CardDescription>
-            </div>
+            <CardTitle className="text-2xl">Statistik Sistem</CardTitle>
+            <CardDescription className="text-base text-saweria-gray">
+              Ringkasan aktivitas dan informasi sistem
+            </CardDescription>
           </CardHeader>
         <CardContent className="space-y-6">
           {/* Stats Grid */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {dashboardStats.map((stat) => {
               const Icon = stat.icon;
               return (
-                <div key={stat.title} className="space-y-2">
+                <div key={stat.title} className="bg-white rounded-2xl p-6 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-muted-foreground">
+                    <span className="text-sm font-bold text-saweria-black uppercase tracking-wide">
                       {stat.title}
                     </span>
-                    <div className={cn(stat.bgColor, "p-2 rounded-lg")}>
-                      <Icon className={cn("h-4 w-4", stat.color)} />
+                    <div className={cn(stat.bgColor, "p-3 rounded-xl")}>
+                      <Icon className={cn("h-6 w-6", stat.color)} />
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <div className="text-2xl font-bold">{stat.value}</div>
-                    <p className="text-xs text-muted-foreground">
+                    <div className="text-3xl font-bold text-saweria-black">{stat.value}</div>
+                    <p className="text-sm text-saweria-gray font-medium">
                       {stat.change}
                     </p>
                   </div>
@@ -144,46 +148,46 @@ export default function DashboardPage() {
             {/* Recent Activity */}
             <div className="col-span-4 space-y-4">
               <div>
-                <h3 className="text-lg font-semibold">System Information</h3>
-                <p className="text-sm text-muted-foreground">Quick overview of the system</p>
+                <h3 className="text-xl font-bold text-saweria-black">Informasi Sistem</h3>
+                <p className="text-sm text-saweria-gray font-medium">Ringkasan cepat dari sistem</p>
               </div>
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 rounded-lg border bg-card">
-                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Users className="h-4 w-4 text-primary" />
+                <div className="flex items-center gap-4 p-5 rounded-2xl border border-black bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="w-12 h-12 rounded-xl bg-saweria-cyan/20 border border-black flex items-center justify-center flex-shrink-0">
+                    <Users className="h-6 w-6 text-saweria-cyan" />
                   </div>
                   <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium leading-none">
+                    <p className="text-base font-bold leading-none text-saweria-black">
                       User Management
                     </p>
-                    <p className="text-sm text-muted-foreground">
-                      {stats.totalUsers} total users with {stats.activeUsers} active accounts
+                    <p className="text-sm text-saweria-gray font-medium">
+                      {stats.totalUsers} total users dengan {stats.activeUsers} akun aktif
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 p-4 rounded-lg border bg-card">
-                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Shield className="h-4 w-4 text-primary" />
+                <div className="flex items-center gap-4 p-5 rounded-2xl border border-black bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="w-12 h-12 rounded-xl bg-saweria-purple/20 border border-black flex items-center justify-center flex-shrink-0">
+                    <Shield className="h-6 w-6 text-saweria-purple" />
                   </div>
                   <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium leading-none">
+                    <p className="text-base font-bold leading-none text-saweria-black">
                       Role Management
                     </p>
-                    <p className="text-sm text-muted-foreground">
-                      {stats.totalRoles} active roles configured in the system
+                    <p className="text-sm text-saweria-gray font-medium">
+                      {stats.totalRoles} role aktif dikonfigurasi dalam sistem
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 p-4 rounded-lg border bg-card">
-                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Activity className="h-4 w-4 text-primary" />
+                <div className="flex items-center gap-4 p-5 rounded-2xl border border-black bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="w-12 h-12 rounded-xl bg-saweria-pink/20 border border-black flex items-center justify-center flex-shrink-0">
+                    <Activity className="h-6 w-6 text-saweria-pink" />
                   </div>
                   <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium leading-none">
+                    <p className="text-base font-bold leading-none text-saweria-black">
                       System Health
                     </p>
-                    <p className="text-sm text-muted-foreground">
-                      All services running normally
+                    <p className="text-sm text-saweria-gray font-medium">
+                      Semua layanan berjalan dengan normal
                     </p>
                   </div>
                 </div>
@@ -193,33 +197,33 @@ export default function DashboardPage() {
             {/* Quick Info */}
             <div className="col-span-3 space-y-4">
               <div>
-                <h3 className="text-lg font-semibold">Your Profile</h3>
-                <p className="text-sm text-muted-foreground">Account information</p>
+                <h3 className="text-xl font-bold text-saweria-black">Profil Anda</h3>
+                <p className="text-sm text-saweria-gray font-medium">Informasi akun</p>
               </div>
-              <div className="space-y-4">
+              <div className="bg-white rounded-2xl border border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] p-6 space-y-5">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-saweria-cyan to-saweria-purple border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center text-3xl font-bold text-white">
                     {user?.full_name?.charAt(0) || 'U'}
                   </div>
                   <div>
-                    <p className="font-medium">{user?.full_name}</p>
-                    <p className="text-sm text-muted-foreground">{user?.email}</p>
+                    <p className="font-bold text-lg text-saweria-black">{user?.full_name}</p>
+                    <p className="text-sm text-saweria-gray font-medium">{user?.email}</p>
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <div className="flex justify-between py-2 border-b">
-                    <span className="text-sm text-muted-foreground">Role</span>
-                    <span className="text-sm font-medium">{user?.role?.name || 'N/A'}</span>
+                  <div className="flex justify-between py-3 border-b border-black">
+                    <span className="text-sm text-saweria-gray font-semibold">Role</span>
+                    <span className="text-sm font-bold text-saweria-black">{user?.role?.name || 'N/A'}</span>
                   </div>
-                  <div className="flex justify-between py-2 border-b">
-                    <span className="text-sm text-muted-foreground">Status</span>
-                    <span className="text-sm font-medium text-green-600">
-                      {user?.is_active ? 'Active' : 'Inactive'}
+                  <div className="flex justify-between py-3 border-b border-black">
+                    <span className="text-sm text-saweria-gray font-semibold">Status</span>
+                    <span className="text-sm font-bold text-green-600">
+                      {user?.is_active ? 'Active ✓' : 'Inactive'}
                     </span>
                   </div>
-                  <div className="flex justify-between py-2">
-                    <span className="text-sm text-muted-foreground">User ID</span>
-                    <span className="text-sm font-medium">#{user?.id}</span>
+                  <div className="flex justify-between py-3">
+                    <span className="text-sm text-saweria-gray font-semibold">User ID</span>
+                    <span className="text-sm font-bold text-saweria-black">#{user?.id}</span>
                   </div>
                 </div>
               </div>

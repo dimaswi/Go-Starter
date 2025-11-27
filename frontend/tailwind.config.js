@@ -13,6 +13,18 @@ export default {
   			ring: 'hsl(var(--ring))',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+  			// Saweria color palette
+  			saweria: {
+  				cyan: '#7DD3C0',
+  				'cyan-dark': '#5AB8A3',
+  				orange: '#FFB84D',
+  				'orange-dark': '#FF9F1C',
+  				pink: '#FF8BA0',
+  				purple: '#A084DC',
+  				black: '#2D2D2D',
+  				gray: '#6B7280',
+  				'gray-light': '#F3F4F6',
+  			},
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'

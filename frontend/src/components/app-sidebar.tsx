@@ -113,14 +113,14 @@ export function AppSidebar() {
       <SidebarHeader className="">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild className="data-[state=open]:bg-transparent">
+            <SidebarMenuButton size="lg" asChild className="data-[state=open]:bg-transparent hover:bg-saweria-cyan/10">
               <a href="/" className="font-semibold">
-                <div className="flex aspect-square size-7 items-center justify-center rounded bg-foreground text-background">
-                  <Building2 className="size-4" />
+                <div className="flex aspect-square size-10 items-center justify-center rounded-xl bg-saweria-cyan border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  <Building2 className="size-5 text-white" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold text-sm">{appName}</span>
-                  <span className="text-xs text-muted-foreground">{appSubtitle}</span>
+                  <span className="font-bold text-base text-saweria-black">{appName}</span>
+                  <span className="text-xs text-saweria-gray">{appSubtitle}</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -130,7 +130,7 @@ export function AppSidebar() {
       
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xs text-muted-foreground font-medium">Menu</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-xs text-saweria-gray font-bold uppercase tracking-wider">Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {visibleMenuItems.map((item) => {
@@ -267,13 +267,13 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton size="lg">
-                  <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <SidebarMenuButton size="lg" className="hover:bg-saweria-cyan/10">
+                  <div className="flex aspect-square size-10 items-center justify-center rounded-xl bg-gradient-to-br from-saweria-cyan to-saweria-purple text-white font-bold border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     {user?.full_name?.charAt(0) || 'U'}
                   </div>
                   <div className="flex flex-col gap-0.5 leading-none">
-                    <span className="font-medium">{user?.full_name}</span>
-                    <span className="text-xs text-muted-foreground">{user?.email}</span>
+                    <span className="font-semibold text-saweria-black">{user?.full_name}</span>
+                    <span className="text-xs text-saweria-gray">{user?.email}</span>
                   </div>
                   <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>

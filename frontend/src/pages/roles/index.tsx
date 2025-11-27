@@ -154,79 +154,79 @@ export default function RolesPage() {
         </Select>
       </div>
 
-      <Card className="border-0 shadow-sm">
+      <Card>
         <CardContent className="p-0">
           <div className="overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-muted/40">
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Role</th>
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Description</th>
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Permissions</th>
-                  <th className="text-right px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Actions</th>
+                <tr className="border-b-2 border-black bg-saweria-purple/10">
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Role</th>
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Description</th>
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Permissions</th>
+                  <th className="text-right px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y">
+              <tbody className="divide-y divide-black/10">
                 {paginatedRoles.map((role) => (
-                  <tr key={role.id} className="hover:bg-muted/30 transition-colors">
-                    <td className="px-4 py-2.5">
-                      <span className="text-sm font-medium">{role.name}</span>
+                  <tr key={role.id} className="hover:bg-saweria-purple/5 transition-colors">
+                    <td className="px-6 py-4">
+                      <span className="text-sm font-semibold text-saweria-black">{role.name}</span>
                     </td>
-                    <td className="px-4 py-2.5">
-                      <span className="text-sm text-muted-foreground">
+                    <td className="px-6 py-4">
+                      <span className="text-sm text-saweria-gray font-medium">
                         {role.description || 'No description'}
                       </span>
                     </td>
-                    <td className="px-4 py-2.5">
-                      <div className="flex flex-wrap gap-1 max-w-md">
+                    <td className="px-6 py-4">
+                      <div className="flex flex-wrap gap-2 max-w-md">
                         {role.permissions?.slice(0, 5).map((perm) => (
                           <span
                             key={perm.id}
-                            className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-foreground/5 border"
+                            className="inline-flex items-center px-2 py-1 rounded-lg text-[10px] font-semibold bg-saweria-cyan/10 text-saweria-cyan border border-saweria-cyan/30"
                           >
                             {perm.name}
                           </span>
                         ))}
                         {(role.permissions?.length || 0) > 5 && (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-muted text-muted-foreground">
-                            +{(role.permissions?.length || 0) - 5}
+                          <span className="inline-flex items-center px-2 py-1 rounded-lg text-[10px] font-semibold bg-saweria-orange/10 text-saweria-orange border border-saweria-orange/30">
+                            +{(role.permissions?.length || 0) - 5} more
                           </span>
                         )}
                         {!role.permissions?.length && (
-                          <span className="text-xs text-muted-foreground">No permissions</span>
+                          <span className="text-xs text-saweria-gray font-medium">No permissions</span>
                         )}
                       </div>
                     </td>
-                    <td className="px-4 py-2.5">
-                      <div className="flex items-center justify-end gap-1">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center justify-end gap-2">
                         {hasPermission('roles.read') && (
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0"
+                            className="h-8 w-8 p-0 hover:bg-saweria-cyan/10"
                             onClick={() => navigate(`/roles/${role.id}`)}
                           >
-                            <Eye className="h-3.5 w-3.5" />
+                            <Eye className="h-4 w-4" />
                           </Button>
                         )}
                         {hasPermission('roles.update') && (
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0"
+                            className="h-8 w-8 p-0 hover:bg-saweria-orange/10"
                             onClick={() => navigate(`/roles/${role.id}/edit`)}
                           >
-                            <Edit className="h-3.5 w-3.5" />
+                            <Edit className="h-4 w-4" />
                           </Button>
                         )}
                         {hasPermission('roles.delete') && (
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0"
+                            className="h-8 w-8 p-0 hover:bg-red-50"
                             onClick={() => handleDelete(role.id)}
                           >
-                            <Trash2 className="h-3.5 w-3.5" />
+                            <Trash2 className="h-4 w-4" />
                           </Button>
                         )}
                       </div>

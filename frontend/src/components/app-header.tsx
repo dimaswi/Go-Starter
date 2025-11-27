@@ -30,10 +30,10 @@ export function AppHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 flex h-14 shrink-0 items-center gap-2 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
+    <header className="sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 bg-white px-4">
       <div className="flex items-center gap-2">
-        <SidebarTrigger className="h-7 w-7" />
-        <Separator orientation="vertical" className="h-4" />
+        <SidebarTrigger className="h-9 w-9 rounded-xl hover:bg-saweria-cyan/10 transition-colors" />
+        <Separator orientation="vertical" className="h-6 bg-gray-200" />
         <Breadcrumb>
           <BreadcrumbList>
             {breadcrumbs.map((crumb, index) => (

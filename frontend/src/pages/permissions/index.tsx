@@ -147,56 +147,56 @@ export default function PermissionsPage() {
         </Select>
       </div>
 
-      <Card className="border-0 shadow-sm">
+      <Card>
         <CardContent className="p-0">
           <div className="overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-muted/40">
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Permission</th>
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Description</th>
-                  <th className="text-right px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider w-32">Actions</th>
+                <tr className="border-b-2 border-black bg-saweria-orange/10">
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Permission</th>
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Description</th>
+                  <th className="text-right px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide w-32">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y">
+              <tbody className="divide-y divide-black/10">
                 {paginatedPermissions.map((permission) => (
-                  <tr key={permission.id} className="hover:bg-muted/30 transition-colors">
-                    <td className="px-4 py-2.5">
-                      <span className="text-sm font-medium font-mono">{permission.name}</span>
+                  <tr key={permission.id} className="hover:bg-saweria-orange/5 transition-colors">
+                    <td className="px-6 py-4">
+                      <span className="text-sm font-bold font-mono text-saweria-black bg-saweria-gray-light px-2 py-1 rounded">{permission.name}</span>
                     </td>
-                    <td className="px-4 py-2.5">
-                      <span className="text-sm text-muted-foreground">
+                    <td className="px-6 py-4">
+                      <span className="text-sm text-saweria-gray font-medium">
                         {permission.description || 'No description'}
                       </span>
                     </td>
-                    <td className="px-4 py-2.5 text-right">
-                      <div className="flex gap-1 justify-end">
+                    <td className="px-6 py-4 text-right">
+                      <div className="flex gap-2 justify-end">
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-7 w-7 p-0"
+                          className="h-8 w-8 p-0 hover:bg-saweria-cyan/10"
                           onClick={() => navigate(`/permissions/${permission.id}`)}
                         >
-                          <Eye className="h-3.5 w-3.5" />
+                          <Eye className="h-4 w-4" />
                         </Button>
                         {hasPermission('roles.update') && (
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0"
+                            className="h-8 w-8 p-0 hover:bg-saweria-orange/10"
                             onClick={() => navigate(`/permissions/${permission.id}/edit`)}
                           >
-                            <Pencil className="h-3.5 w-3.5" />
+                            <Pencil className="h-4 w-4" />
                           </Button>
                         )}
                         {hasPermission('roles.delete') && (
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0 text-destructive hover:text-destructive"
+                            className="h-8 w-8 p-0 text-destructive hover:bg-red-50"
                             onClick={() => handleDelete(permission.id)}
                           >
-                            <Trash2 className="h-3.5 w-3.5" />
+                            <Trash2 className="h-4 w-4" />
                           </Button>
                         )}
                       </div>

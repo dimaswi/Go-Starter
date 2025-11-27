@@ -230,80 +230,80 @@ export default function UsersPage() {
         </Select>
       </div>
 
-      <Card className="border-0 shadow-sm">
+      <Card>
         <CardContent className="p-0">
           <div className="overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-muted/40">
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">User</th>
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Email</th>
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Role</th>
-                  <th className="text-left px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Status</th>
-                  <th className="text-right px-4 py-2.5 font-medium text-xs text-muted-foreground uppercase tracking-wider">Actions</th>
+                <tr className="border-b-2 border-black bg-saweria-cyan/10">
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">User</th>
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Email</th>
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Role</th>
+                  <th className="text-left px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Status</th>
+                  <th className="text-right px-6 py-4 font-bold text-sm text-saweria-black uppercase tracking-wide">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y">
+              <tbody className="divide-y divide-black/10">
                 {paginatedUsers.map((user) => (
-                  <tr key={user.id} className="hover:bg-muted/30 transition-colors">
-                    <td className="px-4 py-2.5">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-full bg-foreground/5 border flex items-center justify-center text-xs font-medium">
+                  <tr key={user.id} className="hover:bg-saweria-cyan/5 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-saweria-cyan to-saweria-purple border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center text-sm font-bold text-white">
                           {user.full_name.charAt(0).toUpperCase()}
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium">{user.full_name}</span>
-                          <span className="text-xs text-muted-foreground">@{user.username}</span>
+                          <span className="text-sm font-semibold text-saweria-black">{user.full_name}</span>
+                          <span className="text-xs text-saweria-gray font-medium">@{user.username}</span>
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-2.5 text-sm text-muted-foreground">{user.email}</td>
-                    <td className="px-4 py-2.5">
-                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-foreground/5 border">
+                    <td className="px-6 py-4 text-sm text-saweria-gray font-medium">{user.email}</td>
+                    <td className="px-6 py-4">
+                      <span className="inline-flex items-center px-3 py-1 rounded-lg text-xs font-semibold bg-saweria-purple/10 text-saweria-purple border border-saweria-purple/30">
                         {user.role?.name || 'N/A'}
                       </span>
                     </td>
-                    <td className="px-4 py-2.5">
+                    <td className="px-6 py-4">
                       <span
-                        className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                        className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-semibold border ${
                           user.is_active
-                            ? 'bg-foreground text-background'
-                            : 'bg-muted text-muted-foreground'
+                            ? 'bg-green-50 text-green-700 border-green-200'
+                            : 'bg-gray-100 text-gray-600 border-gray-200'
                         }`}
                       >
-                        {user.is_active ? 'Active' : 'Inactive'}
+                        {user.is_active ? '✓ Active' : '✗ Inactive'}
                       </span>
                     </td>
-                    <td className="px-4 py-2.5">
-                      <div className="flex items-center justify-end gap-1">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center justify-end gap-2">
                         {hasPermission('users.read') && (
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0"
+                            className="h-8 w-8 p-0 hover:bg-saweria-cyan/10"
                             onClick={() => navigate(`/users/${user.id}`)}
                           >
-                            <Eye className="h-3.5 w-3.5" />
+                            <Eye className="h-4 w-4" />
                           </Button>
                         )}
                         {hasPermission('users.update') && (
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0"
+                            className="h-8 w-8 p-0 hover:bg-saweria-orange/10"
                             onClick={() => navigate(`/users/${user.id}/edit`)}
                           >
-                            <Edit className="h-3.5 w-3.5" />
+                            <Edit className="h-4 w-4" />
                           </Button>
                         )}
                         {hasPermission('users.delete') && (
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0"
+                            className="h-8 w-8 p-0 hover:bg-red-50"
                             onClick={() => handleDelete(user.id)}
                           >
-                            <Trash2 className="h-3.5 w-3.5" />
+                            <Trash2 className="h-4 w-4" />
                           </Button>
                         )}
                       </div>
